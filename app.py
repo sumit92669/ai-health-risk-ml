@@ -1,61 +1,66 @@
 import streamlit as st
+import plotly.graph_objects as go
+import random
 
+# ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="Health Risk AI", page_icon="🧠", layout="centered")
 
 # ---------------- CUSTOM CSS ----------------
 st.markdown("""
 <style>
 
-/* REMOVE STREAMLIT HEADER */
-header {visibility: hidden;}
+/* 💣 KILL STREAMLIT HEADER */
+[data-testid="stHeader"] {display: none;}
+[data-testid="stToolbar"] {display: none;}
+.block-container {padding-top: 1rem;}
 
-/* MAIN BACKGROUND */
+/* 🌌 BACKGROUND */
 .stApp {
     background: linear-gradient(135deg, #0E1117, #1C1F26);
     color: white;
+    overflow: hidden;
 }
 
-/* FLOATING MEDICAL ICONS */
+/* ✨ GLOW PARTICLES */
 .stApp::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        url("https://cdn-icons-png.flaticon.com/512/2966/2966481.png"),
-        url("https://cdn-icons-png.flaticon.com/512/4341/4341139.png"),
-        url("https://cdn-icons-png.flaticon.com/512/822/822143.png");
-    background-repeat: no-repeat;
-    background-position: 
-        5% 20%,
-        95% 30%,
-        10% 85%;
-    background-size: 
-        80px,
-        70px,
-        90px;
-    opacity: 0.08;
-    z-index: -1;
+    background-image: radial-gradient(rgba(0,255,150,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.15;
+    z-index: -2;
 }
 
-/* TITLE */
-.title {
+/* 💊 FLOATING PILLS */
+.pill {
+    position: fixed;
+    width: 40px;
+    animation: float 10s infinite linear;
+    opacity: 0.15;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* ❤️ HEARTBEAT ANIMATION */
+.heartbeat {
     text-align: center;
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-size: 22px;
+    animation: pulse 1.5s infinite;
+    color: #00FF9C;
 }
 
-.subtitle {
-    text-align: center;
-    font-size: 18px;
-    color: #AAAAAA;
-    margin-bottom: 35px;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
 }
 
-/* GLASS CARD */
+/* 🧊 GLASS PANEL */
 .card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -71,12 +76,12 @@ header {visibility: hidden;}
     box-shadow: 0px 0px 25px rgba(0,255,150,0.25);
 }
 
-/* RESULT COLORS */
-.result-low { color: #00FF9C; font-size: 28px; font-weight: bold; }
-.result-medium { color: #FFD700; font-size: 28px; font-weight: bold; }
-.result-high { color: #FF4B4B; font-size: 28px; font-weight: bold; }
+/* 🎯 RESULT COLORS */
+.low {color: #00FF9C; font-size: 26px; font-weight: bold;}
+.medium {color: #FFD700; font-size: 26px; font-weight: bold;}
+.high {color: #FF4B4B; font-size: 26px; font-weight: bold;}
 
-/* BUTTON */
+/* 🚀 BUTTON */
 div.stButton > button {
     background-color: #00FF9C;
     color: black;
@@ -95,11 +100,19 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HEADER ----------------
-st.markdown('<div class="title">🧠 AI Health Risk Predictor</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Patient-Friendly Disease Risk Estimation System</div>', unsafe_allow_html=True)
+# ---------------- FLOATING PILLS ----------------
+for i in range(6):
+    st.markdown(
+        f'<img class="pill" src="https://cdn-icons-png.flaticon.com/512/2966/2966481.png" '
+        f'style="left:{random.randint(0,100)}%; animation-duration:{random.randint(8,14)}s;">',
+        unsafe_allow_html=True
+    )
 
-# ---------------- INPUT CARD ----------------
+# ---------------- HEADER ----------------
+st.markdown('<h1 style="text-align:center;">🧠 AI Health Risk Predictor</h1>', unsafe_allow_html=True)
+st.markdown('<div class="heartbeat">❤️ Real-Time Health Insight Engine</div>', unsafe_allow_html=True)
+
+# ---------------- INPUT PANEL ----------------
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
 st.subheader("🩺 Enter Health Parameters")
@@ -119,15 +132,33 @@ if st.button("🚀 Predict Health Risk"):
     st.markdown('<div class="card">', unsafe_allow_html=True)
 
     if risk_score < 120:
-        st.markdown('<div class="result-low">✅ Low Risk</div>', unsafe_allow_html=True)
-        st.write("Your parameters look stable. Keep maintaining a healthy lifestyle.")
-
+        risk_label = "Low Risk"
+        color_class = "low"
     elif risk_score < 160:
-        st.markdown('<div class="result-medium">⚠️ Medium Risk</div>', unsafe_allow_html=True)
-        st.write("Some parameters are slightly elevated. Lifestyle improvements recommended.")
-
+        risk_label = "Medium Risk"
+        color_class = "medium"
     else:
-        st.markdown('<div class="result-high">🚨 High Risk</div>', unsafe_allow_html=True)
-        st.write("Parameters indicate elevated risk. Professional medical consultation advised.")
+        risk_label = "High Risk"
+        color_class = "high"
+
+    st.markdown(f'<div class="{color_class}">Prediction: {risk_label}</div>', unsafe_allow_html=True)
+
+    # ---------------- GAUGE METER ----------------
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=risk_score,
+        title={'text': "Risk Score"},
+        gauge={
+            'axis': {'range': [0, 200]},
+            'bar': {'color': "cyan"},
+            'steps': [
+                {'range': [0, 120], 'color': "#00FF9C"},
+                {'range': [120, 160], 'color': "#FFD700"},
+                {'range': [160, 200], 'color': "#FF4B4B"},
+            ],
+        }
+    ))
+
+    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
