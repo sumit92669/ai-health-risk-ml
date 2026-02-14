@@ -9,10 +9,17 @@ st.set_page_config(page_title="Health Risk AI", page_icon="🧠", layout="center
 st.markdown("""
 <style>
 
-/* 💣 KILL STREAMLIT HEADER */
+/* 💣 KILL STREAMLIT HEADER + BAR + GHOST ELEMENTS */
 [data-testid="stHeader"] {display: none;}
 [data-testid="stToolbar"] {display: none;}
-.block-container {padding-top: 1rem;}
+[data-testid="stDecoration"] {display: none;}
+[data-testid="stStatusWidget"] {display: none;}
+hr {display: none;}   /* ← THIS kills glowing bar */
+
+/* REMOVE TOP SPACING */
+.block-container {
+    padding-top: 0.5rem;
+}
 
 /* 🌌 BACKGROUND */
 .stApp {
@@ -44,20 +51,6 @@ st.markdown("""
 @keyframes float {
     from { transform: translateY(100vh); }
     to { transform: translateY(-10vh); }
-}
-
-/* ❤️ HEARTBEAT ANIMATION */
-.heartbeat {
-    text-align: center;
-    font-size: 22px;
-    animation: pulse 1.5s infinite;
-    color: #00FF9C;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
 }
 
 /* 🧊 GLASS PANEL */
@@ -110,7 +103,7 @@ for i in range(6):
 
 # ---------------- HEADER ----------------
 st.markdown('<h1 style="text-align:center;">🧠 AI Health Risk Predictor</h1>', unsafe_allow_html=True)
-st.markdown('<div class="heartbeat">❤️ Real-Time Health Insight Engine</div>', unsafe_allow_html=True)
+st.markdown('<h4 style="text-align:center; color: #00FF9C;">💊 Advanced Health Insight Engine</h4>', unsafe_allow_html=True)
 
 # ---------------- INPUT PANEL ----------------
 st.markdown('<div class="card">', unsafe_allow_html=True)
@@ -143,7 +136,7 @@ if st.button("🚀 Predict Health Risk"):
 
     st.markdown(f'<div class="{color_class}">Prediction: {risk_label}</div>', unsafe_allow_html=True)
 
-    # ---------------- GAUGE METER ----------------
+    # ---------------- GAUGE ----------------
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=risk_score,
