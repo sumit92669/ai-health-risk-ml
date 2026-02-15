@@ -1,90 +1,81 @@
-# AI-Based Early Disease Risk Prediction System (Offline)
+# Privacy-Friendly Offline Health Risk Assessment System
 
 ## 📌 Overview
-This project is an offline machine learning-based risk assessment system that estimates the probability of common lifestyle diseases such as diabetes, heart disease, and obesity using basic health parameters.
 
-The system is designed to work entirely offline, ensuring privacy, accessibility, and independence from proprietary APIs.
+This project is a privacy-friendly offline machine learning system designed to estimate the relative risk of common lifestyle diseases using basic health parameters.
+
+The application focuses on risk awareness rather than diagnosis, promoting preventive healthcare and lifestyle consciousness.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-✔ Multi-disease risk prediction  
 ✔ Offline-first design (No internet required)  
+✔ Privacy-friendly local computation  
+✔ Lifestyle disease risk classification  
 ✔ Risk score computation  
-✔ Explainable AI predictions  
-✔ Feature importance analysis  
 ✔ Visual risk indicators  
-✔ BMI auto-calculation  
+✔ Interpretable outputs  
 
 ---
 
 ## 🧠 Technical Approach
 
-The prediction engine uses:
+The system utilizes:
 
 - Logistic Regression  
 - Decision Tree Classifier  
-- Risk Score Calculation  
-- Feature Importance Analysis  
+- Risk Score Computation  
+- Data Visualization  
 
-The system provides interpretable outputs indicating which health parameters contributed most to the prediction.
+Predictions are designed to be interpretable, emphasizing transparency in model outputs.
 
 ---
 
-## 🔒 Offline & Privacy-Focused
+## 🔒 Offline & Privacy-Focused Design
 
-✔ No internet dependency  
-✔ No proprietary APIs  
-✔ Local computation  
-✔ Privacy-friendly design  
+✔ No external APIs  
+✔ No proprietary dependencies  
+✔ No data transmission  
+✔ Fully local execution  
+
+This ensures improved accessibility and user privacy.
 
 ---
 
 ## 🛠 Tech Stack
 
 - Python  
+- Streamlit  
 - Scikit-learn  
 - NumPy  
 - Pandas  
-- Matplotlib / Plotly  
-- (Optional UI: Flask / Streamlit)
+- Plotly / Matplotlib  
 
 ---
 
 ## ⚙ How It Works
 
 1. User inputs basic health parameters  
-2. Data preprocessing  
-3. ML model prediction  
-4. Risk score calculation  
-5. Explainable insights  
-6. Visualization output  
+2. Data processing & normalization  
+3. Machine learning inference  
+4. Risk score computation  
+5. Visual feedback & insights  
 
 ---
 
-## 📊 Dataset
+## 🌍 Practical Relevance
 
-This project uses publicly available healthcare datasets for training and evaluation.
-
-Example sources:
-
-- Kaggle datasets  
-- UCI Machine Learning Repository  
+✔ Preventive health awareness  
+✔ Usable in low-connectivity environments  
+✔ Privacy-friendly design  
+✔ Educational value  
 
 ---
 
 ## ⚠ Disclaimer
 
-This system is intended for **educational and risk awareness purposes only** and does not replace professional medical diagnosis.
-
----
-
-## 📉 Limitations
-
-✔ Predictions depend on dataset quality  
-✔ Not a clinical diagnostic tool  
-✔ Simplified health parameter model  
+This system is intended for educational and risk awareness purposes only and does not replace professional medical diagnosis.
 
 ---
 
