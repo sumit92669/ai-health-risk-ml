@@ -1,84 +1,105 @@
-# Privacy-Friendly Offline Health Risk Assessment System
+# 🧠 Privacy-Friendly Offline Health Risk Assessment System
 
-## 📌 Overview
-
-This project is a privacy-friendly offline machine learning system designed to estimate the relative risk of common lifestyle diseases using basic health parameters.
-
-The application focuses on risk awareness rather than diagnosis, promoting preventive healthcare and lifestyle consciousness.
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Streamlit](https://img.shields.io/badge/Built%20With-Streamlit-red.svg)
+![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
 
 ---
 
-## 🚀 Key Features
+## 📌 Overview
 
-✔ Offline-first design (No internet required)  
+The **Privacy-Friendly Offline Health Risk Assessment System** is an offline machine learning application designed to estimate the relative risk of common lifestyle diseases using basic health indicators.
+
+This project prioritizes:
+
+✔ Privacy  
+✔ Accessibility  
+✔ Interpretability  
+✔ Preventive Healthcare Awareness  
+
+Unlike diagnostic systems, this tool focuses on **risk awareness and educational insights**.
+
+---
+
+## 🚀 Live Demo
+
+👉 **Try the App Here:**  
+https://your-app-link.streamlit.app
+
+---
+
+## ✨ Key Highlights
+
+✔ Offline-first architecture  
 ✔ Privacy-friendly local computation  
-✔ Lifestyle disease risk classification  
-✔ Risk score computation  
-✔ Visual risk indicators  
+✔ No proprietary API dependencies  
+✔ Machine learning-based inference  
+✔ Visual risk score representation  
 ✔ Interpretable outputs  
 
 ---
 
-## 🧠 Technical Approach
+## 🧠 Technical Foundation
 
-The system utilizes:
+The system leverages:
 
 - Logistic Regression  
 - Decision Tree Classifier  
 - Risk Score Computation  
 - Data Visualization  
 
-Predictions are designed to be interpretable, emphasizing transparency in model outputs.
+Designed with emphasis on:
+
+✔ Explainability  
+✔ Lightweight computation  
+✔ Practical usability  
 
 ---
 
-## 🔒 Offline & Privacy-Focused Design
+## 🔒 Privacy & Offline Design
 
-✔ No external APIs  
-✔ No proprietary dependencies  
-✔ No data transmission  
+This application runs entirely offline:
+
+✔ No internet dependency  
+✔ No external data transmission  
+✔ No proprietary services  
 ✔ Fully local execution  
 
-This ensures improved accessibility and user privacy.
+Suitable for:
+
+✔ Low-connectivity environments  
+✔ Privacy-sensitive contexts  
+✔ Educational demonstrations  
 
 ---
 
-## 🛠 Tech Stack
+## 🖥 Application Interface
 
-- Python  
-- Streamlit  
-- Scikit-learn  
-- NumPy  
-- Pandas  
-- Plotly / Matplotlib  
+### 📊 Risk Visualization
+Interactive risk gauge for intuitive feedback.
 
----
-
-## ⚙ How It Works
-
-1. User inputs basic health parameters  
-2. Data processing & normalization  
-3. Machine learning inference  
-4. Risk score computation  
-5. Visual feedback & insights  
+### 🩺 Health Parameter Input
+Simple & user-friendly input panel.
 
 ---
 
-## 🌍 Practical Relevance
+## 📸 Screenshots
 
-✔ Preventive health awareness  
-✔ Usable in low-connectivity environments  
-✔ Privacy-friendly design  
-✔ Educational value  
+### 🔹 Input Dashboard
+![Input UI](screenshots/input_ui.png)
 
 ---
 
-## ⚠ Disclaimer
-
-This system is intended for educational and risk awareness purposes only and does not replace professional medical diagnosis.
+### 🔹 Risk Output Panel
+![Output UI](screenshots/output_ui.png)
 
 ---
 
-## 📜 License
+## ⚙ Installation & Setup
 
-This project is licensed under the MIT License.
+Clone repository:
+
+```bash
+git clone https://github.com/yourusername/repository-name.git
+cd repository-name
